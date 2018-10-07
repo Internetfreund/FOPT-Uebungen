@@ -1,28 +1,20 @@
 package fopt;
 
-public class Loop12 implements Runnable
-{
-    private String myName;
-    
-    public Loop2(String name)
-    {
-        myName = name;
-    }
-    
-    public void run()
+public class Loop12
+{    
+    private static void execute(String myName)
     {
         for(int i=1; i<=100;i++)
         {
-            new Thread(() -> System.out.println(myName + " (" + i + ")")).start();
-            //System.out.println(myName + " (" + i + ")");
+            System.out.println(myName + " (" + i + ")");
         }
     }
 
     public static void main(String[] args)
     {
-        new Thread(new Loop2("Thread 1")).start();
-        new Thread(new Loop2("Thread 2")).start();
-        new Thread(new Loop2("Thread 3")).start();
+        new Thread(() -> execute ("Fred 1")).start();
+        new Thread(() -> execute ("Fred 2")).start();
+        new Thread(() -> execute ("Fred 3")).start();
     }
 }
 
